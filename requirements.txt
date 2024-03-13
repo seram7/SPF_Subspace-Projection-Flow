@@ -1,0 +1,15 @@
+numpy
+scipy
+scikit-learn
+matplotlib
+hydra-core
+omegaconf
+black
+isort
+pytest
+timm
+tqdm
+scikit-image
+tensorboardX
+tensorboard
+streamlit

@@ -1,0 +1,43 @@
+# @package _global_
+
+model:
+  _target_: models.npos.NPOS
+  name: npos
+  backbone_name: vit_base_patch16_224
+  spherical: True
+  centercrop: False
+  n_class: 100
+  sample_number: 600 #Equal to the sample number for training
+  pretrained: True
+  
+  
+training:
+  _target_: trainers.npos_trainer.VirtualTrainer_NPOS
+  config:
+    n_class: 100
+    feature_dim: 768
+    proto_m: 0.90
+    comp_l_temp: 0.07
+    comp_base_temp: 0.07
+    disp_l_temp: 0.1
+    disp_base_temp: 0.1
+    n_epoch: 50
+    start_epoch: 20
+    sample_from: 10000
+    ID_points_num: 5
+    K: 300
+    select: 5
+    cov_mat: 0.1
+    sampling_ratio: 1.0
+    pick_nums: 2
+    w_disp: 0.05
+    w_comp: 1.0
+    ur_loss_weight: 1.0
+    print_interval: 10
+    val_interval: 100
+    save_interval: 100
+    save_interval_epoch: 2
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-6
+

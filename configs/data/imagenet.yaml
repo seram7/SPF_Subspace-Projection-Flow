@@ -1,0 +1,77 @@
+# @package _global_
+
+data:
+  name: imagenet  # name of this set of datasets
+  train:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: True
+    num_workers: 4
+    dataset:
+      _target_: loader.ImageNet1K_OOD
+      root: datasets
+      split: training 
+  val:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False 
+    num_workers: 2
+    dataset:
+      _target_: loader.ImageNet1K_OOD
+      root: datasets
+      split: validation
+  test:
+      _target_: torch.utils.data.DataLoader
+      batch_size: 128
+      shuffle: False 
+      num_workers: 2
+      dataset:
+        _target_: loader.ImageNet1K_OOD
+        root: datasets
+        split: evaluation 
+  # ood_inaturalist:
+  #   _target_: torch.utils.data.DataLoader
+  #   batch_size: 128
+  #   shuffle: False
+  #   num_workers: 2
+  #   dataset:
+  #     _target_: loader.iNaturalist_OOD
+  #     root: datasets
+  #     split: validation
+  # ood_texture:
+  #   _target_: torch.utils.data.DataLoader
+  #   batch_size: 128
+  #   shuffle: False
+  #   num_workers: 2
+  #   dataset:
+  #     _target_: loader.Texture_ViM_OOD
+  #     root: datasets
+  #     split: validation
+  ood_imagenet_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.ImageNet_O_OOD
+      root: datasets
+      split: validation
+  ood_openimages_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Openimages_O_OOD
+      root: datasets
+      split: validation
+  # ood_places365:
+  #   _target_: torch.utils.data.DataLoader
+  #   batch_size: 128
+  #   shuffle: False
+  #   num_workers: 2
+  #   dataset:
+  #     _target_: loader.Places365_OOD
+  #     root: datasets
+  #     split: validation
+

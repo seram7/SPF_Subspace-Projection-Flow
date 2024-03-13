@@ -1,0 +1,96 @@
+# @package _global_
+
+data:
+  ood_svhn:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.SVHN_OOD
+      root: datasets
+      split: evaluation
+  ood_cifar10:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.CIFAR10_OOD
+      root: datasets
+      split: evaluation
+  ood_constant:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Constant_OOD
+      root: datasets
+      split: evaluation
+  ood_noise:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Noise_OOD
+      root: datasets
+      split: evaluation
+  ood_LSUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.LSUN_OOD
+      root: datasets
+      split: evaluation
+  ood_iSUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.ISUN_OOD
+      root: datasets
+      split: evaluation
+  ood_texture:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Texture_OOD
+      root: datasets
+      split: evaluation
+  ood_mnist:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.MNIST_OOD
+      root: datasets
+      split: evaluation
+  ood_places365:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Places365_OOD
+      root: datasets
+      split: evaluation
+  ood_tinyimagenet:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.TinyImageNet_OOD
+      root: datasets
+      split: evaluation
+  
+
+

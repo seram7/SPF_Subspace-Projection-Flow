@@ -1,0 +1,31 @@
+# @package _global_
+
+model:
+  _target_: models.backbone_sphere.Backbone_sphere
+  name: backbone_sphere
+  backbone_name: vit_base_patch16_224
+  spherical: True 
+  centercrop: False
+  n_class: 1000
+  pretrained: True
+  feat_dir: ./results/${data.name}_${model.name}/${run}
+  ft_model_dir: ./results/${data.name}_${model.name}/finetune
+
+training:
+  _target_: trainers.backbone_sphere_trainer.Backbone_sphere_Trainer
+  config:
+    n_class: 1000
+    feature_dim: 768
+    proto_m: 0.9
+    comp_l_temp: 0.07
+    comp_base_temp: 0.07
+    disp_l_temp: 0.1
+    disp_base_temp: 0.1
+    n_epoch: 5
+    print_interval: 10
+    val_interval: 5000
+    save_interval: 5000
+    compute_auc: False
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 5e-6

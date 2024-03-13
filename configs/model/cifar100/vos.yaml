@@ -1,0 +1,30 @@
+# @package _global_
+
+model:
+  _target_: models.vos.VOS
+  name: vos
+  backbone_name: vit_base_patch16_224
+  spherical: False
+  centercrop: False
+  n_class: 100
+  sample_number: 500 #must be equal to the sample number for training
+  pretrained: True
+  
+  
+training:
+  _target_: trainers.vos_trainer.VirtualTrainer
+  config:
+    n_epoch: 50
+    start_epoch: 20
+    sample_number: 500 
+    sample_from: 10000
+    select: 1
+    ur_loss_weight: 0.1
+    print_interval: 10
+    val_interval: 100
+    save_interval: 200
+    save_interval_epoch: 5
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 5e-6
+

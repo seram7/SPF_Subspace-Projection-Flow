@@ -1,0 +1,102 @@
+# @package _global_
+
+# extracted features (for evaluation)
+eval:
+  in_cifar100:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: True
+    num_workers: 4
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/test_
+
+  ood_cifar10:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_cifar10_
+  
+  ood_tinyimagenet:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_tinyimagenet_
+  
+  ood_mnist:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_mnist_  
+  
+  ood_svhn:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_svhn_
+  
+  ood_texture:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_texture_
+  
+  ood_places365:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_places365_
+
+  ood_iSUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: false
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_iSUN_
+  
+  ood_LSUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: false
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_LSUN_
+  
+  ood_noise:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_noise_
+  
+  ood_constant:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/cifar100_backbone_sphere/finetune/ood_constant_

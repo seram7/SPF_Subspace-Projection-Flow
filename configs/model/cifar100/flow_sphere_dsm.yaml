@@ -1,0 +1,51 @@
+# @package _global_
+
+model:
+  _target_: models.flow_sphere_dsm.Flow_Sphere_EBM
+  name: flow_sphere_dsm
+  backbone_name: vit_base_patch16_224
+  spherical: True 
+  centercrop: False
+  n_class: 100
+  pretrained: True
+  feat_dir: ./results/${data.name}_${model.name}/${run}
+  tau: 0.01
+  coef_reg: 0.1
+  coef_dsm: 1.e-04
+  coef_inlier_projection_error: 1.0
+  coef_l2reg: 1.e-04
+  dsm_sigma: 0.1
+  id_reg: True
+  dsm_reg: False
+  intermediate_dim: 1000
+  proj_error_type: Euclidean
+  evr_threshold: 0.9
+  custom_dim: False
+  neg_initial_mode: cd
+  z_flow: True
+  z_flow_type: multi-flow
+  z_multi_flow_num: 20
+  n_hidden_mlp: 2
+  dsm_scale : False
+  input_noise: Null 
+  ft_model_dir: ./results/${data.name}_backbone_sphere/finetune
+
+training:
+  _target_: trainers.flow_sphere_dsm_trainer.Flow_Sphere_Dsm_Trainer
+  config:
+    n_class: 100
+    feature_dim: 768
+    proto_m: 0.9
+    comp_l_temp: 0.07
+    comp_base_temp: 0.07
+    disp_l_temp: 0.1
+    disp_base_temp: 0.1
+    n_epoch: 70
+    print_interval: 100
+    val_interval: 500
+    best_save_interval: 500
+    save_interval: 4000
+    compute_auc: True
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-5

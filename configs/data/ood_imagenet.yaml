@@ -1,0 +1,76 @@
+# @package _global_
+
+data:
+  ood_ssb_hard:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.SSB_hard_OOD
+      root: datasets
+      split: evaluation
+  ood_ninco:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.NINCO_OOD
+      root: datasets
+      split: evaluation
+  ood_iNaturalist:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.iNaturalist_OOD
+      root: datasets
+      split: evaluation
+  ood_texture:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Texture_OOD
+      root: datasets
+      split: evaluation
+  ood_openimages_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Openimages_O_OOD
+      root: datasets
+      split: evaluation
+  ood_imagenet_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.ImageNet_O_OOD
+      root: datasets
+      split: evaluation
+  ood_SUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.SUN_OOD
+      root: datasets
+      split: evaluation
+  ood_places:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Places_OOD
+      root: datasets
+      split: evaluation
+

@@ -1,0 +1,85 @@
+# @package _global_
+
+# extracted features (for evaluation)
+eval:
+  in_imagenet:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: True
+    num_workers: 4
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/test_
+
+  ood_ssb_hard:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_ssb_hard_
+      
+  ood_ninco:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_ninco_
+
+  ood_imagenet_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_imagenet_o_
+
+  ood_iNaturalist:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: false
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_iNaturalist_
+
+  ood_texture:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: false
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_texture_
+
+  ood_openimages_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_openimages_o_
+
+  ood_SUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_SUN_
+
+  ood_places:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/ood_places_
+

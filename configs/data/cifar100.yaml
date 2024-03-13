@@ -1,0 +1,68 @@
+# @package _global_
+
+# this file is for backbone training
+data:
+  name: cifar100  # name of this set of datasets
+  train:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 64
+    shuffle: True
+    num_workers: 4
+    dataset:
+      _target_: loader.CIFAR100_OOD
+      root: datasets
+      split: training 
+  val:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 64
+    shuffle: False 
+    num_workers: 2
+    dataset:
+      _target_: loader.CIFAR100_OOD
+      root: datasets
+      split: validation
+  test:
+      _target_: torch.utils.data.DataLoader
+      batch_size: 64
+      shuffle: False 
+      num_workers: 2
+      dataset:
+        _target_: loader.CIFAR100_OOD
+        root: datasets
+        split: evaluation 
+  ood_svhn:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 64
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.SVHN_OOD
+      root: datasets
+      split: validation
+  ood_cifar10:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 64
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.CIFAR10_OOD
+      root: datasets
+      split: validation
+  ood_LSUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 64
+    shuffle: false
+    num_workers: 2
+    dataset:
+      _target_: loader.LSUN_OOD
+      root: datasets
+      split: evaluation
+  ood_iSUN:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 64
+    shuffle: false
+    num_workers: 2
+    dataset:
+      _target_: loader.ISUN_OOD
+      root: datasets
+      split: evaluation

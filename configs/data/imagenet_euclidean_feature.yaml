@@ -1,0 +1,45 @@
+# @package _global_
+
+# extracted features (for train&validation)
+data:
+  name: imagenet  # name of this set of datasets
+  train:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: True
+    num_workers: 4
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/
+  val:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False 
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/val_
+  test:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False 
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/test_
+  ood_imagenet_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/val_ood_imagenet_o_
+  ood_openimages_o:
+    _target_: torch.utils.data.DataLoader
+    batch_size: 128
+    shuffle: False
+    num_workers: 2
+    dataset:
+      _target_: loader.Feature_dataset
+      root: results/imagenet_backbone_euclidean/finetune/val_ood_openimages_o_

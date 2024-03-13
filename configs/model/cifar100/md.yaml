@@ -1,0 +1,21 @@
+# @package _global_
+
+model:
+  _target_: models.md.Mahalanobis
+  name: md
+  backbone_name: vit_base_patch16_224
+  spherical: False
+  centercrop: False
+  n_class: 100
+  pretrained: True
+  feat_dir: ./results/${data.name}_${model.name}/${run}
+training:
+  _target_: trainers.ood.OODTrainer
+  config:
+    n_epoch: 10
+    print_interval: 10
+    val_interval: 100
+    save_interval: 200
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-5

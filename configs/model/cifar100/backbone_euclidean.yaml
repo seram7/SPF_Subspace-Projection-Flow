@@ -1,0 +1,28 @@
+# @package _global_
+
+model:
+  _target_: models.backbone_euclidean.Backbone_Euclidean
+  name: backbone_euclidean
+  backbone_name: vit_base_patch16_224
+  spherical: False
+  centercrop: False
+  feat_normalize: False
+  n_class: 100
+  pretrained: True
+  feat_dir: ./results/${data.name}_${model.name}/${run}
+  ft_model_dir: ./results/${data.name}_${model.name}/finetune
+
+training:
+  _target_: trainers.backbone_euclidean_trainer.Backbone_euclidean_Trainer
+  config:
+    n_class: 100
+    feature_dim: 768
+    n_epoch: 10
+    print_interval: 7
+    val_interval: 200
+    save_interval: 200
+    compute_auc: False
+    compute_acc: True
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-5

@@ -1,0 +1,27 @@
+# @package _global_
+
+model:
+  _target_: models.backbone_vim.Backbone_ViM
+  name: backbone_vim
+  backbone_name: vit_base_patch16_224
+  spherical: False 
+  centercrop: False
+  n_class: null
+  pretrained: True
+  feat_dir: ./results/${data.name}_${model.name}/${run}
+  ft_model_dir: ./results/${data.name}_${model.name}/finetune
+
+training:
+  _target_: trainers.backbone_vim_trainer.Backbone_ViM_Trainer
+  config:
+    n_class: 1000
+    feature_dim: 768
+    n_epoch: 5
+    print_interval: 10
+    val_interval: 200
+    save_interval: 200
+    compute_auc: False
+    compute_acc: True
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 1e-5
